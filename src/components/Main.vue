@@ -2,10 +2,11 @@
   <div class="main">
     <h1 class="main__heading">{{ title }}</h1>
     <p class="main__intro">{{ intro }}</p>
-    <input type="text" :placeholder="placeholder" v-model="inputName">
+    <input type="text" :placeholder="placeholder.name" v-model="input.name">
+    <input type="text" :placeholder="placeholder.code" v-model="input.code">
     <button @click="addDeck">+</button>
     <ul class="main__decklist">
-      <deck v-for="deck in decks" :key="deck.id" :id="deck.id" :deckName="deck.name"/>
+      <deck v-for="deck in decks" :key="deck.id" :id="deck.id" :deckName="deck.name" :code="deck.code"/>
     </ul>
   </div>
 </template>
@@ -22,8 +23,14 @@ export default {
     return {
       title: "Hearthstone Deck Vault",
       intro: "Simple app to store your Hearthstone decks.",
-      placeholder: "Give your deck a name",
-      inputName: "",
+      placeholder: {
+        name: "Give your deck a name",
+        code: "Paste the deck code here"
+      },
+      input: {
+        name: "",
+        code: ""
+      },
       decks: [
         {
           id: 1,
@@ -48,10 +55,12 @@ export default {
       const lastId = this.decks.slice(-1)[0].id;
       const newDeck = {
         id: lastId + 1,
-        name: this.inputName
+        name: this.input.name,
+        code: this.input.code
       };
       this.decks = [...this.decks, newDeck];
-      this.inputName = "";
+      this.input.name = "";
+      this.input.code = "";
     }
   }
 };
