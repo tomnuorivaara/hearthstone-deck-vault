@@ -11,33 +11,36 @@
 </template>
 
 <script>
-import Vue from 'vue';
-import Deck from './Deck';
+import Vue from "vue";
+import Deck from "./Deck";
 
-Vue.component('deck', Deck);
+Vue.component("deck", Deck);
 
 export default {
-  name: 'Main',
+  name: "Main",
   data() {
     return {
-      title: 'Hearthstone Deck Vault',
-      intro: 'Simple app to store your Hearthstone decks.',
-      placeholder: 'Give your deck a name',
-      inputName: '',
+      title: "Hearthstone Deck Vault",
+      intro: "Simple app to store your Hearthstone decks.",
+      placeholder: "Give your deck a name",
+      inputName: "",
       decks: [
         {
           id: 1,
-          name: 'My first deck',
+          name: "My first deck",
+          code: "first code"
         },
         {
           id: 2,
-          name: 'Tempo Rogue',
+          name: "Tempo Rogue",
+          code: "second code"
         },
         {
           id: 3,
-          name: 'Demon Warlock',
-        },
-      ],
+          name: "Demon Warlock",
+          code: "third code"
+        }
+      ]
     };
   },
   methods: {
@@ -45,20 +48,20 @@ export default {
       const lastId = this.decks.slice(-1)[0].id;
       const newDeck = {
         id: lastId + 1,
-        name: this.inputName,
+        name: this.inputName
       };
       this.decks = [...this.decks, newDeck];
-      this.inputName = '';
-    },
-  },
+      this.inputName = "";
+    }
+  }
 };
 </script>
 
 <style lang="scss" scoped>
-  .main {
-    &__decklist {
-        margin-left: 2rem;
-        text-align: left;
-    }
+.main {
+  &__decklist {
+    margin-left: 2rem;
+    text-align: left;
   }
+}
 </style>
