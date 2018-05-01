@@ -27,7 +27,7 @@ export default {
   data() {
     return {
       copyStatus: null,
-      messageDisplayTime: 1500
+      messageDisplayTime: 2000
     };
   },
   methods: {
@@ -67,12 +67,31 @@ export default {
   &__copy-status {
     font-size: map-get($font-size, "sm");
     margin: 0 0.5rem;
+    opacity: 0;
+    animation-name: fade-in-out;
+    animation-duration: 2000ms;
     &--success {
       color: green;
     }
     &--error {
       color: red;
     }
+  }
+}
+
+// Animations
+@keyframes fade-in-out {
+  0% {
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
   }
 }
 </style>

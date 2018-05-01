@@ -73,7 +73,7 @@ export default {
       }
     },
     validateDeck(deck) {
-      if (!deck.name || deck.code) {
+      if (!deck.name || !deck.code) {
         // eslint-disable-next-line
         alert(this.error.emptyDeck);
         return false;
