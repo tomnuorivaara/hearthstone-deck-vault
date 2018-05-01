@@ -11,7 +11,13 @@
       <button @click="addDeck">+ Add</button>
     </div>
     <div class="decklist">
-      <deck v-for="deck in decks" :key="deck.id" :id="deck.id" :deck-name="deck.name" :code="deck.code" :delete-deck="deleteDeck" />
+      <deck v-for="deck in decks"
+            :key="deck.id"
+            :id="deck.id"
+            :deck-name="deck.name"
+            :code="deck.code"
+            :delete-deck="deleteDeck"
+            />
     </div>
   </div>
 </template>
@@ -61,7 +67,6 @@ export default {
   },
   methods: {
     addDeck() {
-      // const lastId = this.decks.slice(-1)[0].id;
       const newDeck = {
         id: uuid.v4(),
         name: this.input.name,
@@ -98,7 +103,7 @@ export default {
 }
 .decklist {
   display: flex;
-  align-items: stretch;
+  align-items: flex-start;
   flex-wrap: wrap;
   margin: 0 2rem;
   text-align: left;
