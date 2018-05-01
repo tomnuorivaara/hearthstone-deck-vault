@@ -1,7 +1,6 @@
 <template>
   <div class="deck">
-    <button class="deck__delete-button" @click="deleteDeck()">Delete</button>
-    <p class="deck__id">{{ id }}</p>
+    <button class="deck__delete-button" @click="deleteDeck(id)">Delete</button>
     <h2 class="deck__name">
     {{ deckName }}
     </h2>
@@ -61,7 +60,7 @@ export default {
     top: 1.5rem;
     right: 1.5rem;
   }
-  &__id {
+  &__name {
     margin-top: 0;
   }
   &__copy-status {

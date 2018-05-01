@@ -18,6 +18,7 @@
 
 <script>
 import Vue from "vue";
+import { uuid } from "vue-uuid";
 import Deck from "./Deck";
 
 Vue.component("deck", Deck);
@@ -38,17 +39,17 @@ export default {
       },
       decks: [
         {
-          id: 1,
+          id: uuid.v4(),
           name: "My first deck",
           code: "first code"
         },
         {
-          id: 2,
+          id: uuid.v4(),
           name: "Tempo Rogue",
           code: "second code"
         },
         {
-          id: 3,
+          id: uuid.v4(),
           name: "Demon Warlock",
           code: "third code"
         }
@@ -60,9 +61,9 @@ export default {
   },
   methods: {
     addDeck() {
-      const lastId = this.decks.slice(-1)[0].id;
+      // const lastId = this.decks.slice(-1)[0].id;
       const newDeck = {
-        id: lastId + 1,
+        id: uuid.v4(),
         name: this.input.name,
         code: this.input.code
       };
@@ -80,9 +81,8 @@ export default {
       }
       return true;
     },
-    deleteDeck() {
-      // eslint-disable-next-line
-      alert("Deleted!");
+    deleteDeck(id) {
+      this.decks = this.decks.filter(deck => deck.id !== id);
     }
   }
 };
